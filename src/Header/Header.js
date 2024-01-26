@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import './Header.css'
 
 // Importando os icones e pasando como variaveis 
@@ -9,8 +9,15 @@ import search from '../assets/icons/search.png'
 
 const Header = ({ onSearchInputChange }) => {
     const handleInputChange = (event) => {
-        onSearchInputChange(event.target.value);
-    };
+        // event é o objeto de evento associado à mudança no input
+        // event.target é o elemento que disparou o evento, neste caso, o input
+        // event.target.value contém o valor atual do input no momento da mudança
+    
+        // onSearchInputChange é uma função passada como propriedade para este componente
+        // Esta função é usada para atualizar o estado de pesquisa no componente pai
+        onSearchInputChange(event.target.value)
+    }
+    
     return(
         <nav className="header__navigation">
             <div className="navigation">
@@ -30,6 +37,7 @@ const Header = ({ onSearchInputChange }) => {
                     autoCapitalize="off"
                     spellCheck="false"
                     placeholder="O que você quer ouvir?"
+                    // Quando há uma mudança no input é chamada a função que pega seu valor
                     onChange={handleInputChange}
                 />
             </div>
