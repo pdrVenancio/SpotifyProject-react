@@ -7,7 +7,10 @@ import smallLeft from '../assets/icons/small-left.png'
 import search from '../assets/icons/search.png'
 
 
-const header = () => {
+const Header = ({ onSearchInputChange }) => {
+    const handleInputChange = (event) => {
+        onSearchInputChange(event.target.value);
+    };
     return(
         <nav className="header__navigation">
             <div className="navigation">
@@ -20,8 +23,15 @@ const header = () => {
             </div>
             <div className="header__search">
                 <img src={search} alt="" />
-                <input id="search-input" maxlength="800" autocorrect="off" autocapitalize="off" spellcheck="false"
-                    placeholder="O que você quer ouvir?" value="" />
+                <input
+                    id="search-input"
+                    maxLength="800"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck="false"
+                    placeholder="O que você quer ouvir?"
+                    onChange={handleInputChange}
+                />
             </div>
             <div className="header__login">
                 <button className="subscribe">Inscreva-se</button>
@@ -32,4 +42,4 @@ const header = () => {
 }
 
 // exportamos a função que contem o html
-export default header
+export default Header
